@@ -4,26 +4,15 @@ require "functions.php";
 //
 // connect to our MySql database.
         require 'Database.php';
-        require 'config.php';
-        $db = new Database($config);
-        $posts =  $db->query("select * from posts ")->fetchAll(PDO::FETCH_ASSOC);
+        $config = require('config.php');
+        $db = new Database($config['database']);
+        $id = $_GET['id'];
+        // never ever ever except user input and inline it as part of a database مهم  جدا
+//        $query = "select * from posts where id=?";
+        $query = "select * from posts where id= :id";
+        $posts =  $db->query($query,[':id' => $id])->fetch();
 
         dd($posts);
 //        foreach ($posts as $post){
 //            echo "<li>". $post['title'] . "</li>";
 //        }
-
-
-
-//class Person{
-//    public $name;
-//    public $age;
-//    public function breathe(){
-//        echo $this->name . ' is breathing';
-//    }
-//}
-//
-//$person = new Person();
-//$person->name = 'yahya khalid';
-//$person->age = 25;
-//dd($person->breathe());
