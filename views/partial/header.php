@@ -4,6 +4,20 @@
     <meta charset="UTF-8">
     <title>Demo</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <!--
+ This example requires some changes to your config:
+
+ ```
+ // tailwind.config.js
+ module.exports = {
+   // ...
+   plugins: [
+     // ...
+     require('@tailwindcss/forms'),
+   ],
+ }
+ ```
+-->
 </head>
 
 <body class="h-full">
