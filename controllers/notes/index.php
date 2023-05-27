@@ -1,9 +1,7 @@
 <?php
-// set the heading of the page
-$heading = 'Notes';
 
 // load the database configuration from the file
-$config = require('config.php');
+$config = require base_path('config.php');
 
 // create a new database object using the configuration
 $db = new Database($config['database']);
@@ -12,4 +10,7 @@ $db = new Database($config['database']);
 $notes = $db->query('select * from notes where user_id=1')->get();
 
 // load the notes view and pass in the notes
-require "views/notes.view.php";
+view("notes/index.view.php",[
+    'heading' => 'Notes',
+    'notes' => $notes
+]);

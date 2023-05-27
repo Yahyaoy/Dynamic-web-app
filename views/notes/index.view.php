@@ -1,7 +1,7 @@
-
-<?php require('partial/header.php') ?>
-<?php require('partial/nav.php') ?>
-<?php require('partial/banner.php') ?>
+<!--we can use DIR or use directory-->
+<?php require base_path('views/partial/header.php') ?>
+<?php require base_path('views/partial/nav.php') ?>
+<?php require base_path('views/partial/banner.php') ?>
 
     <main>
         <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
@@ -22,4 +22,4 @@
         </div>
     </main>
 
-<?php require('partial/foot.php') ?>
+<?php require base_path('views/partial/foot.php') ?>

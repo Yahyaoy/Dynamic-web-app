@@ -13,8 +13,17 @@ function urlIs($value) {
     return $_SERVER['REQUEST_URI'] === $value;
 }
 
-function authorize($conditon,$status=Response::FORPIDDEN){
-    if(!$conditon){
+function authorize($condition,$status=Response::FORPIDDEN){
+    if(!$condition){
         abort($status);
     }
+}
+
+function base_path($path){
+    return BASE_PATH.$path;
+}
+
+function view($path, $attributes=[]){
+    extract($attributes);
+    require base_path('views/'.$path);
 }

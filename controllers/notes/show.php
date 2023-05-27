@@ -3,7 +3,7 @@
     $heading = 'My Note';
 
     // Load the database configuration settings
-    $config = require('config.php');
+    $config = require base_path('config.php');
 
     // Create a new instance of the database class
     $db = new Database($config['database']);
@@ -22,4 +22,7 @@
     authorize($note['user_id'] == $currentUserId);
 
     // Load the note view template
-    require "views/note.view.php";
+    view("notes/show.view.php",[
+        'heading' => 'Note',
+        'note' => $note
+    ]);
