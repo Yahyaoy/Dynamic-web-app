@@ -1,5 +1,6 @@
 <?php
-
+namespace Core;
+use PDO; // لازم نحطها عشان ما يطلع ايرور او بنحط سلاش \قبل كل بي دي او في الكلاس
 /**
  * Class Database - A class to establish database connection and execute SQL queries
  */

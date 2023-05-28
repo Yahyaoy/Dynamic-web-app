@@ -1,4 +1,5 @@
 <?php
+use Core\Response;
 
 function dd($value)
 {
@@ -24,6 +25,6 @@ function base_path($path){
 }
 
 function view($path, $attributes=[]){
-    extract($attributes);
+    extract($attributes); // to extract data from attribute عشان اجيب الداتا
     require base_path('views/'.$path);
 }

@@ -1,5 +1,5 @@
 <?php
-
+use Core\Database;
 // load the database configuration from the file
 $config = require base_path('config.php');
 
