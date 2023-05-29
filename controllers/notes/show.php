@@ -5,26 +5,8 @@
 
     // Create a new instance of the database class
     $db = new Database($config['database']);
-
-   if($_SERVER['REQUEST_METHOD']=='POST'){
-       // form was submitted , delete the current note
-
-       // Retrieve the note record from the database
-       $note = $db->query('select * from notes where id = :id', [
-           ':id' => $_GET['id']
-       ])->findOrFail();
-
-       // Set the current user ID
-       $currentUserId = 5;
-
-       authorize($note['user_id'] == $currentUserId);
-
-       $db->query('delete from notes where id = :id',[
-           'id'=>$_GET['id']
-       ]);
-       header('location:/notes');
-       exit();
-   }else{
+    // Set the current user ID
+    $currentUserId = 1;
 
        // Retrieve the note ID from the URL parameters
        $id = $_GET['id'];
@@ -34,8 +16,6 @@
            ':id' => $id
        ])->findOrFail();
 
-       // Set the current user ID
-       $currentUserId = 1;
 
        authorize($note['user_id'] == $currentUserId);
 
@@ -44,4 +24,5 @@
            'heading' => 'Note',
            'note' => $note
        ]);
-   }
+
+

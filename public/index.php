@@ -1,4 +1,6 @@
 <?php
+use Core\Router;
+
 const BASE_PATH  = __DIR__. '/../';
 require BASE_PATH . "Core/functions.php";
 
@@ -8,9 +10,17 @@ spl_autoload_register(function($class){
     require BASE_PATH . "{$class}.php";
 });
 
-require BASE_PATH . 'Core/router.php';
+require base_path('Core/router.php');
+$router = new \Core\Router();
+$routes = require base_path('routes.php');
 
+// Get the path from the URI
+$uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
+$method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];// راح يوخذ لميثود من الاينبوت لو ما لقى هيوخذ من الريكويست
+//dd($method);
+$router->route($uri, $method);
+//require BASE_PATH . 'Core/Router.php';
 
 
 
