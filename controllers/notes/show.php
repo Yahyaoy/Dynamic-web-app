@@ -1,10 +1,8 @@
     <?php
     use Core\Database;
-    // Load the database configuration settings
-    $config = require base_path('config.php');
+    use Core\App;
 
-    // Create a new instance of the database class
-    $db = new Database($config['database']);
+    $db = App::resolve(Database::class);
     // Set the current user ID
     $currentUserId = 1;
 

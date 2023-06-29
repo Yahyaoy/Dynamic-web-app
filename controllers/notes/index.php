@@ -1,10 +1,8 @@
 <?php
 use Core\Database;
-// load the database configuration from the file
-$config = require base_path('config.php');
+use Core\App;
 
-// create a new database object using the configuration
-$db = new Database($config['database']);
+$db = App::resolve(Database::class);
 
 // query the database to get all notes for the current user
 $notes = $db->query('select * from notes where user_id=1')->get();
