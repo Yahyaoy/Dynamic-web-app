@@ -1,5 +1,6 @@
 <?php
 use Core\Router;
+use Core\Session;
 
 const BASE_PATH  = __DIR__. '/../';
 require BASE_PATH . "Core/functions.php";
@@ -23,6 +24,8 @@ $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];// راح يوخذ ل�
 $router->route($uri, $method);
 //require BASE_PATH . 'Core/Router.php';
 
+Session::unflash();
+//unset($_SESSION['_flashed']);
 
 
 
