@@ -20,10 +20,15 @@ $routes = require base_path('routes.php');
 $uri = parse_url($_SERVER['REQUEST_URI'])['path'];
 
 $method = $_POST['_method'] ?? $_SERVER['REQUEST_METHOD'];// راح يوخذ لميثود من الاينبوت لو ما لقى هيوخذ من الريكويست
-//dd($method);
-$router->route($uri, $method);
-//require BASE_PATH . 'Core/Router.php';
 
+try{
+    $router->route($uri, $method);
+}catch (\Core\ValidationException $exception){
+//$_SESSION['_flashed']['errors'] = $form->errors();
+    Session::flash('errors', $exception->errors);
+    Session::flash('old', $exception->old);
+    return redirect($router->previousUrl());
+}
 Session::unflash();
 //unset($_SESSION['_flashed']);
 
